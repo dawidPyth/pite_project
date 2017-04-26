@@ -52,6 +52,8 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'english_elearning.urls'
 
+LOGIN_REDIRECT_URL = '/' # It means home view
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
