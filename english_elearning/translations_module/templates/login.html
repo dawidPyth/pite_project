@@ -1,70 +1,92 @@
-{% extends "admin/base_site.html" %}
+<!DOCTYPE html>
+<html>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
 
-{% load i18n admin_static %}
+input[type=text], input[type=password] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin:auto;
+    display:block;
+}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />
-{{ form.media }}
-{% endblock %}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    margin:auto;
+    display:block;
+}
 
-{% block bodyclass %}{{ block.super }} login{% endblock %}
+button:hover {
+    opacity: 0.8;
+}
 
-{% block usertools %}{% endblock %}
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
 
-{% block nav-global %}{% endblock %}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
 
-{% block content_title %}{% endblock %}
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
 
-{% block breadcrumbs %}{% endblock %}
+.container {
+    padding: 16px;
+}
 
-{% block content %}
-{% if form.errors and not form.non_field_errors %}
-<p class="errornote">
-{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
-</p>
-{% endif %}
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
 
-{% if form.non_field_errors %}
-{% for error in form.non_field_errors %}
-<p class="errornote">
-    {{ error }}
-</p>
-{% endfor %}
-{% endif %}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+<body>
 
-<div id="content-main">
+<h2>Login Form</h2>
 
-{% if user.is_authenticated %}
-<p class="errornote">
-{% blocktrans with username=request.user.username trimmed %}
-    You are authenticated as {{ username }}, but are not authorized to
-    access this page. Would you like to login to a different account?
-{% endblocktrans %}
-</p>
-{% endif %}
+<form method='POST' action="" enctype="multipart/form-data">
 
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-  <div class="form-row">
-    {{ form.username.errors }}
-    {{ form.username.label_tag }} {{ form.username }}
+
+  <div class=class="col-sm-6 col-sm-offset-3">
+    <label><b><center>Username</center></b></label><br>
+    <input type="text" placeholder="Enter Username" name="username" required><br>
+
+    <label><b><center>Password</center></b></label><br>
+    <input type="password" placeholder="Enter Password" name="password" required><br>
+        
+    <button type="submit">Login</button>
+
   </div>
-  <div class="form-row">
-    {{ form.password.errors }}
-    {{ form.password.label_tag }} {{ form.password }}
-    <input type="hidden" name="next" value="{{ next }}" />
-  </div>
-  {% url 'admin_password_reset' as password_reset_url %}
-  {% if password_reset_url %}
-  <div class="password-reset-link">
-    <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
-  </div>
-  {% endif %}
-  <div class="submit-row">
-    <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" />
-  </div>
+
 </form>
 
-<script type="text/javascript">
-document.getElementById('id_username').focus()
-</script>
-</div>
-{% endblock %}
+</body>
+</html>

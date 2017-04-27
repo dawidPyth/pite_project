@@ -16,13 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
-from login.views import register
+from login.views import (login_view, logout_view, register_view)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('translations_module.urls')),
     url(r'', include('english_elearning.login.urls')),
-    url(r'^login/$', views.login, {'template_name': 'login.html'}),
-    url(r'^logout/$', views.logout, {'template_name': 'logout.html'}),
-    url(r'^register/$', register, name='reg_form.html'),
+    url(r'^login/$', login_view, name='login'),
+    url(r'^register/$', register_view, name='register'),
+    url(r'^logout/$', logout_view, name='logout'),
 ]
