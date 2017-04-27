@@ -40,9 +40,7 @@ INSTALLED_APPS = [
     'translations_module',
     'crispy_forms',
 ]
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
