@@ -6,7 +6,7 @@ form {
 }
 
 input[type=text], input[type=password] {
-    width: 30%;
+    width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -17,13 +17,13 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #D9853B;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 30%;
+    width: 80%;
     margin:auto;
     display:block;
 }
@@ -67,20 +67,25 @@ span.psw {
        width: 100%;
     }
 }
+form {
+margin: 0 auto;
+width:40%;
+padding-bottom: 16px;
+}
 </style>
-<body>
-<h2>Login Form</h2>
+<body style="background:#74AFAD">
+<h2><center>Login Form</center></h2>
 
-<form method="POST" action="" enctype="multipart/form-data">
+<form method="POST" action="" enctype="multipart/form-data" style="background:#558C89" >
   {% csrf_token %}
-  <div class=class="col-sm-6 col-sm-offset-3">
+  <div id="outer" style="width:100%">
     <label><b><center>Username</center></b></label><br>
     <input type="text" placeholder="Enter Username" name="username" required><br>
 
     <label><b><center>Password</center></b></label><br>
     <input type="password" placeholder="Enter Password" name="password" required><br>
-        
-    <button type="submit">Login</button>
+
+    <button type="submit" class="button [radius round]">Login</button>
 
   </div>
 
