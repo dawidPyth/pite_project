@@ -73,7 +73,7 @@ span.psw {
 <h2>Register Form</h2>
 
 <form method='POST' action="" enctype="multipart/form-data">
-
+  {% csrf_token %}
 
   <div class=class="col-sm-6 col-sm-offset-3">
     <label><b><center>Username</center></b></label><br>

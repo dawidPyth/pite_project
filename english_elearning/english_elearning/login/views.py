@@ -5,21 +5,22 @@ from .forms import UserLoginForm, UserRegisterForm
 # Create your views here.
 # this login required decorator is to not allow to any
 # view without authenticating
+
+
 @login_required(login_url="login/")
 def home(request):
     return render(request,"home.html")
 
 
 def login_view(request):
-    print(request.user.is_authenticated())
+    logout(request)
     title = "Login"
-    form = UserLoginForm(request.POST or None)
+    form = UserLoginForm(request.POST)
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         user = authenticate(username=username, password=password)
         login(request, user)
-        print(request.user.is_authenticated())
         return redirect("/")
     return render(request, 'login.html', {"form":form, "title": title})
 
@@ -30,6 +31,7 @@ def logout_view(request):
 
 
 def register_view(request):
+    logout(request)
     title = 'Register'
     form = UserRegisterForm(request.POST or None)
     request.user.is_authenticated()
@@ -45,4 +47,4 @@ def register_view(request):
         "form": form,
         "title": title
     }
-    return render(request, 'form.html', context)
+    return render(request, 'reg_form.html', context)
