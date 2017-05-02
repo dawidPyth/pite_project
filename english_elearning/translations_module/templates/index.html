@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <title>
+        {% block title %} E-learning {% endblock %}
+    </title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="../static/css/styles.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 </head>
 <body>
 
 <div id="top">
-    TOP
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">E-learning</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+               aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Profile</a>
+                </li>
+                <li><a href="#">Check progress</a>
+                </li>
+                <li><a href="#">History</a>
+                </li>
+                <li><a href="#">Jakies cos</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Log out</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </div>
+
 
 <div id="bottom">
     <td align="right">
-        <table border="0" cellpadding="0" cellspacing="0">
+        <table border="0" cellpadding="0" cellspacing="10">
             <tr>
                 <td>© 2017 E-learning, Inc.</td>
-                <td>Co tam jeszcze można włożyć do stopki</td>
+                <td>Co tam jeszcze można włożyć do stopki              .</td>
                 <td>
                     <a href="https://github.com/damianswist/pite_project">
                         <img src="../static/images/github-logo_big.png" class="icons" alt="Github"/>
@@ -57,7 +85,10 @@
 </div>
 
 <div id="main">
+    {% block content %}
     MAIN
+    {% endblock %}
+
 </div>
 
 <script type="text/javascript">
