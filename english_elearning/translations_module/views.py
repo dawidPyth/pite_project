@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 
 def post_list(request):
-    return render(request, 'hello_world.html', {})
+    return render(request, 'index.html', {})
