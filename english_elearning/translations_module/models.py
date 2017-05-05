@@ -19,3 +19,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+'''
+class Translation(models.Model):
+	pol_eng = models.CharField(max_length=60)
+	eng_pol = models.CharField(max_lenght=60)
+	suggestions = models.CharField(max_length=60)
+'''
+	
