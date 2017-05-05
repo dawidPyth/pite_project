@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login',
     'translations_module',
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -51,6 +53,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'english_elearning.urls'
+
+LOGIN_REDIRECT_URL = '/' # It means home view
 
 TEMPLATES = [
     {
@@ -67,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 WSGI_APPLICATION = 'english_elearning.wsgi.application'
 

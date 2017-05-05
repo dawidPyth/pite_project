@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin:auto;
+    display:block;
+}
+
+button {
+    background-color: #7457b8;
+    color: white;
+    padding: 14px 40px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    margin:auto;
+    display:block;
+    border: none;
+    border-radius: 5px;
+    -moz-box-shadow:: 6px 6px 5px #999;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+form {
+margin: 0 auto;
+width:30%;
+padding-bottom: 16px;
+}
+</style>
+<body style="background:#85898a">
+<h2><center>Register Form</center></h2>
+
+<form method='POST' action="" enctype="multipart/form-data" style="background:#5dc4a5" >
+  {% csrf_token %}
+  <div id="outer" style="width:100%">
+    <label><b><center>Username</center></b></label><br>
+    <input type="text" placeholder="Enter Username" name="username" required><br>
+
+    <label><b><center>Password</center></b></label><br>
+    <input type="password" placeholder="Enter Password" name="password" required><br>
+
+    <label><b><center>Email</center></b></label><br>
+    <input type="text" placeholder="Enter Email" name="email" required><br>
+
+    <label><b><center>Confirm Email</center></b></label><br>
+    <input type="text" placeholder="Confirm Email" name="email2" required><br>
+
+    <button type="submit">Register</button>
+
+  </div>
+
+</form>
+
+</body>
+</html>
