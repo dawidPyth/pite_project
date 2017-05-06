@@ -128,9 +128,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_FILE_PATH = '~/.virtualenvs/pite_project/pite_project/english_elearning/translations_module/app-messages'
 #DEFAULT_FROM_EMAIL = 'djw@malinator.com'
 #SERVER_EMAIL = 'jan125djw@gmail.com'
+#
+# EMAIL_HOST = 'poczta.o2.pl'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'python.projekt@o2.pl'
+# EMAIL_HOST_PASSWORD = 'najlepsze'
+# EMAIL_USE_TLS = True
 
-EMAIL_HOST = 'smtp.mailinator.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'python.projekt'
+EMAIL_HOST_PASSWORD = 'najlepsze2017'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'djw@mailinator.com'
-EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
