@@ -86,21 +86,16 @@
 
 <div id="main">
     {% block content %}
-	<title>polish-english</title>
-    	<form action="/searched/" method="get">
-	<input type="text" name="q">
-	<input type="submit" value="English">
-	</form>
-	
-	<!--<li><p><font color="brown">Do you know other translation of this word?</font></p></li>
-	<li><form action="/send_email/" method="POST">
+	<li><font color="brown">
+	message 	
+	</font></li>
+	<li><p><font color="brown">Do you know other translation of this word?</font></p></li>
+	<li><form action="/search_form/" method="POST.get">
 	<input type="text" name="message">
 	<input type="submit" value="send suggestion">
 	<input type="from email" value="from_email">
 	</form>
-	</li>-->
-
-	
+	</li>
     {% endblock %}
 
 </div>
