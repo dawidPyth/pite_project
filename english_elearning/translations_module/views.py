@@ -29,12 +29,17 @@ def send_email(request):
     from_email = request.POST.get('from_email', '')
     if subject and message and from_email:
         try:
-            send_mail(subject, message, from_email, ['jan125djw@gmail.com'])
+            send_mail(subject, message, from_email, ['jan125djw@gmail.com'], fail_silently=False)
+	    HttpResponse('Email has been sent')
+	    #msg = mail.EmailMessage(subject, message, to=['jan125djw@gmail.com'])
+	    #msg.send()
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
 	return render(request, 'search_form.thml')        
 	#return HttpResponseRedirect('/search_form/')
     else:
         return HttpResponse('Make sure all fields are entered and valid.')
+
+
 
 

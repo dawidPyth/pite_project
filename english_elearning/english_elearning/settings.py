@@ -119,4 +119,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
+
+# settings for e-mail sending
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_FILE_PATH = '~/.virtualenvs/pite_project/pite_project/english_elearning/translations_module/app-messages'
+#DEFAULT_FROM_EMAIL = 'djw@malinator.com'
+#SERVER_EMAIL = 'jan125djw@gmail.com'
+
+EMAIL_HOST = 'smtp.mailinator.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'djw@mailinator.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
