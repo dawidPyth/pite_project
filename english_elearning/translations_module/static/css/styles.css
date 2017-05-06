@@ -4,7 +4,7 @@ html {
 
 body {
     font-size: 100%;
-    background: #32373d;
+    background: #5dc4a5;
     display: table-row;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -25,11 +25,11 @@ body {
     top: 100px;
     right: 10px;
     bottom: 65px;
-    background: #27314e;
+    background: #7457b8;
 }
 
 #bottom {
-    background: #474f55;
+    background: #85898a;
     width: auto;
     height: auto;
     position: absolute;
@@ -37,7 +37,7 @@ body {
     left: 250px;
     right: 10px;
     font-size: 1.2125em;
-    color: #c5cdd7;
+    color: #85898a;
 
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .dropdown-menu {
-    background: #727A86;
+    background: #85898a;
     color: #fff;
 }
 
@@ -71,11 +71,11 @@ ul, ul ul {
 }
 
 #menu_wrapper {
-    width: 220px;
+    width: auto;
     margin: 150px auto;
     /*font-size: 1.1125em;*/
     float: left;
-    font-size: 18px;
+    font-size: auto;
 }
 
 #menu_wrapper .menu {
@@ -216,7 +216,7 @@ ul, ul ul {
     width: 1em;
     height: 1em;
     top: 0;
-    left: -2.7em;
+    width: 100%;
 }
 
 #menu_wrapper .menu > li > ul li:hover a,
