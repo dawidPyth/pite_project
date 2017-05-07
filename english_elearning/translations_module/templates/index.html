@@ -67,7 +67,7 @@
     <ul class="menu">
         <li class="main_page"><a href="#">Main page </a>
         </li>
-        <li class="pol_eng"><a href="#">Polish->English Dictionary </a>
+        <li class="pol_eng"><a href="/dictionary/" onclick="goToURL(href)">Polish->English Dictionary </a>
         </li>
         <li class="eng_pol"><a href="#">English->Polish Dictionary</a>
         </li>
@@ -112,6 +112,11 @@
         });
 
     });
+
+    function goToURL(href) {
+      location.href = href;
+
+    }
 
 </script>
 

@@ -9,7 +9,7 @@ from .forms import UserLoginForm, UserRegisterForm
 
 @login_required(login_url="login/")
 def home(request):
-    return render(request,"home.html")
+    return render(request,"index.html")
 
 
 def login_view(request):

@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<form action="/dictionary/" method="post">
+    {% csrf_token %}
+    <input id="dictionary" type="text" name="word" value="{{ word }}">
+    <input type="submit" value="Translate">
+</form>
+
+{% for word in translated_words %}
+    <p> {{ word }} </p>
+{% endfor %}
+
+{% endblock %}
