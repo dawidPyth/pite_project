@@ -18,7 +18,7 @@ def search(request):
     if request.method == 'GET':
         if 'q' in request.GET:
 	    word = request.GET.get('q')
-            message = 'You searched for: %r' % word #request.GET.get('q')
+            message = 'You searched for: {}'.format(word) 
         else:
             message = 'You submitted an empty form.'
 

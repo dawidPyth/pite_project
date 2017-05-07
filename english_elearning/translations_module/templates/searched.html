@@ -5,8 +5,10 @@
 <li><font color="brown">
     {{message}}
 </font></li>
+<li><font color="brown">Meaning: wordFromDatabase</li></font>
+<li></li>
 {% endif %}
-<li><p><font color="brown">Do you know other translation of this word?</font></p></li>
+<li><p><font color="brown">Do you know other translation of this word? If so, let us know!</font></p></li>
 <li>
 
     <form action="{% url 'send_email' %}" method="post">
