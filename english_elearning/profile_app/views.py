@@ -3,13 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
 from .forms import UserLoginForm, UserRegisterForm
 # Create your views here.
-# this login required decorator is to not allow to any
+# this profile_app required decorator is to not allow to any
 # view without authenticating
 
 
-@login_required(login_url="login/")
+@login_required(login_url="profile_app/")
 def home(request):
-    return render(request,"index.html")
+    return render(request,"base.html")
 
 
 def login_view(request):

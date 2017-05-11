@@ -16,13 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from login.views import login_view, logout_view, register_view
+from profile_app.views import login_view, logout_view, register_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('translations_module.urls')),
-    url(r'', include('login.urls')),
-    url(r'^login/$', login_view, name='login'),
+    url(r'', include('profile_app.urls')),
+    url(r'^login/$', login_view, name='profile_app'),
     url(r'^register/$', register_view, name='register'),
     url(r'^logout/$', logout_view, name='logout'),
 ]
