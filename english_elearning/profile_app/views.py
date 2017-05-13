@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm
+from forms import UserLoginForm, UserRegisterForm
+from django.contrib import messages
 # Create your views here.
 # this profile_app required decorator is to not allow to any
 # view without authenticating
@@ -16,12 +17,15 @@ def login_view(request):
     logout(request)
     title = "Login"
     form = UserLoginForm(request.POST)
-    if form.is_valid():
-        username = form.cleaned_data.get("username")
-        password = form.cleaned_data.get("password")
-        user = authenticate(username=username, password=password)
-        login(request, user)
-        return redirect("/")
+    if request.method == 'POST':
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect("/")
+        else:
+            messages.info(request, 'Wrong name or password!')
     return render(request, 'login.html', {"form":form, "title": title})
 
 
@@ -43,6 +47,9 @@ def register_view(request):
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request, user)
         return redirect("/")
+    else:
+
+        messages.info(request, form.errors)
     context = {
         "form": form,
         "title": title
