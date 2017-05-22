@@ -10,7 +10,8 @@ from django.contrib import messages
 
 @login_required(login_url="profile_app/")
 def home(request):
-    return render(request,"base.html")
+    # return render(request,"base.html")
+    return render(request, "base.html")
 
 
 def login_view(request):
