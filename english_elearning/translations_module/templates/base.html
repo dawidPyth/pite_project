@@ -56,12 +56,28 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
+                    <!--<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>-->
+                    <!--</li>-->
+
+                        <!--<li class="dropdown-submenu">-->
+                        <!--<a class="test" tabindex="-1" href="#">New dropdown <span class="caret"></span></a>-->
+                        <!--<ul class="dropdown-menu ">-->
+                          <!--<li><a tabindex="-1" href="#">2nd level dropdown</a></li>-->
+                          <!--<li><a tabindex="-1" href="#">2nd level dropdown</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <li class="dropdown-submenu">
+                <a tabindex="-1" href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/change_email/">Change email</a></li>
+                    <li><a href="/change_password/">Change password</a></li>
+                </ul>
+            </li>
+
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Progress</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="logout/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="/logout/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
