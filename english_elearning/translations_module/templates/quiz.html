@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+
+	{% for word in print_word %}
+	    <p> {{ word }} </p>
+	{% endfor %}
+
+
+	<form action="/quiz/" method="post">
+	    {% csrf_token %}
+	    <input id="translate" type="text" name="word" value="{{ word }}">
+	    <input type="submit" value="Translate">
+	</form>
+
+
+	<p> {{ message }} </p>
+
+
+<div>You have <span id="time"></span>seconds left!</div>
+<script>
+function startTimer(duration, display) {
+    var timer = duration, seconds;
+    setInterval(function () {
+        //minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        //minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = seconds;
+
+        if (--timer < 0) {
+
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var durationSeconds = 20,
+        display = document.querySelector('#time');
+    startTimer(durationSeconds, display);
+};
+</script>
+
+
+
+{% endblock %}
