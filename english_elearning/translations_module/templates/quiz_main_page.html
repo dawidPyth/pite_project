@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form action="/quiz_main_page/" method="post">
+  {% csrf_token %}
+<!-- Small boxes (Stat box) -->
+        <br> &nbsp;
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>
+                    2
+                  </h3>
+                  <p>
+                    Tests Completed
+                  </p>
+                </div>
+                <div>
+                </div>
+                <a href="/Quiz1/" class="small-box-footer">
+                  Start <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+              <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>
+                    21
+                  </h3>
+                  <p>
+                    Tests Completed
+                  </p>
+                </div>
+                <div>
+                </div>
+                <a href="/Quiz2/" class="small-box-footer">
+                  Start <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>
+                    15
+                  </h3>
+                  <p>
+                    Tests Completed
+                  </p>
+                </div>
+                <div>
+                </div>
+                <a href="/Quiz3/" class="small-box-footer">
+                  Start <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+          </div><!-- /.row -->
+
+</form>
+{% endblock %}

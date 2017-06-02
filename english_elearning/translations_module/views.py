@@ -76,3 +76,12 @@ class PasswordView(DetailView):
         else:
             messages.error(request, 'Passwords doesn\'t match')
         return render(request, 'change_password.html')
+
+
+class QuizMainView(DetailView):
+
+    def get(self, request):
+        return render(request, 'quiz_main_page.html')
+
+    def post(self, request):
+        return render(request, 'quiz_main_page.html')
