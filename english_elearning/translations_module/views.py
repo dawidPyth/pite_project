@@ -237,3 +237,13 @@ class MixedQuiz(DetailView):
             quiz_words.save()
         context = {'result': result}
         return render(request, 'results.html', context=context)
+
+
+class QuizSelection(DetailView):
+    def get(self, request):
+        return render(request, 'quiz_selection.html')
+
+
+class Statistics(DetailView):
+    def get(self, request):
+        return render(request, 'statistics.html')

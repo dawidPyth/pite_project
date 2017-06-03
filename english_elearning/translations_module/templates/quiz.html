@@ -11,7 +11,7 @@
 	{% endfor %}
 
 
-	<form action="/quiz/" method="post">
+	<form action="/simplequiz/" method="post">
 	    {% csrf_token %}
 	    <input id="translate" type="text" name="word" value="{{ word }}">
 	    <input type="submit" value="Translate">
