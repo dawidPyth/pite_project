@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
-from profile_app.views import login_view, logout_view, register_view
+from django.contrib.auth.decorators import login_required
+from profile_app.views import LoginView, LogoutView, RegisterView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('translations_module.urls')),
     url(r'', include('profile_app.urls')),
-    url(r'^login/$', login_view, name='profile_app'),
-    url(r'^register/$', register_view, name='register'),
-    url(r'^logout/$', logout_view, name='logout'),
+    url(r'^login/$', LoginView.as_view(), name='profile_app'),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^logout/$', login_required(LogoutView.as_view()), name='logout'),
 ]

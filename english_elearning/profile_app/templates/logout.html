@@ -17,7 +17,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: #7457b8;
+    background-color: #337ab7;
     color: white;
     padding: 14px 40px;
     margin: 8px 0;
@@ -50,7 +50,17 @@ img.avatar {
     width: 40%;
     border-radius: 50%;
 }
-
+.panel-primary > .panel-heading {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
 .container {
     padding: 16px;
 }
@@ -76,18 +86,24 @@ width:30%;
 padding-bottom: 16px;
 }
 </style>
-<body style="background:#85898a">
+<br> &nbsp;
 
-<form action="" enctype="multipart/form-data" style="background:#5dc4a5" >
 
-<div class="container">
-    <h1><center>Logged out</center></h1>
-    <p><center>
-        You have logged out!
-    </center></p>
-</div>
+<div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-check-square fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div>You have logged out!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                    </a>
+                </div>
 
-</form>
 
 </body>
 </html>
