@@ -1,15 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-<br> &nbsp;
+
 
 <form action="/dictionary/" method="post">
     {% csrf_token %}
-    <input id="dictionary" type="text" name="word" value="{{ word }}">
+        <div class="row" align="center">
+    <img src="https://www.iolante.com/wp-content/uploads/2015/07/polish-to-english.jpg">
+            </div>
+    <br> &nbsp;
+    <div class="row" align="center">
+    <input id="dictionary" placeholder="polish or english" type="text" name="word" value="{{ word }}" >
     <input type="submit" value="Translate">
+        </div>
 </form>
 
+    <br> &nbsp;
 {% for word in translated_words %}
+    {% if language == 'polish' %}
+    <img src="http://europajezykow.pl/wp-content/uploads/flaga-polska.png"style="width: 4%; height: 4%" >
+    {% else %}
+    <img src="http://www.gosciniec-florianski.pl/img/flaga_angielska.png" style="width: 4%; height: 4%">
+    {% endif %}
+    &nbsp;<b>
+        {{ word_to_translate }}
+    </b>
+    <br> &nbsp;
     <p> {{ word }} </p>
 {% endfor %}
 
