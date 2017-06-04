@@ -85,3 +85,11 @@ class QuizMainView(DetailView):
 
     def post(self, request):
         return render(request, 'quiz_main_page.html')
+
+
+class ChartView(DetailView):
+    def get(self, request):
+        return render(request, 'charts.html')
+
+    def post(self, request):
+        return render(request, 'charts.html')

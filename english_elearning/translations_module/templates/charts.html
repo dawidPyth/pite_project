@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="/charts/" method="post">
+    {% csrf_token %}
+            <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Progress bars</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+            <div class="row" align="center">
+             <div class="row" style="padding:20px;">
+
+                <div class="col-sm-12 col-md-4" >
+                    <div class="inner-content text-center">
+
+                        <div class="c100 p25 big center bgaqua">
+                            <span>25%</span>
+                            <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                        </div>
+
+
+                    </div>
+                            <br> &nbsp;
+                    <font face="Helvetica Neue">1st quiz</font>
+                </div><!-- /.col -->
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="inner-content text-center">
+
+                        <div class="c100 p50 big center bggreen">
+                            <span>50%</span>
+                            <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                        </div>
+
+                    </div>
+                            <br> &nbsp;
+                    <font face="Helvetica Neue">2nd quiz</font>
+                </div><!-- /.col -->
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="inner-content text-center">
+
+                        <div class="c100 p75 big center bgyellow">
+                            <span>75%</span>
+                            <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                        </div>
+
+
+                    </div>
+                            <br> &nbsp;
+
+                    <font face="Helvetica Neue">3rd quiz</font>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+
+
+        </div><!-- /.container -->
+</form>
+
+
+{% endblock %}

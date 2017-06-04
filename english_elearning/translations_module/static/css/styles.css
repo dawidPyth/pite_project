@@ -219,7 +219,6 @@ ul, ul ul {
     top: 0;
     width: 100%;
 }
-
 #menu_wrapper .menu > li > ul li:hover a,
 #menu_wrapper .menu > li > ul li:hover a span,
 #menu_wrapper .menu > li > ul li:hover a:before {
