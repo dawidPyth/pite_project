@@ -130,7 +130,7 @@ class MixedQuiz(DetailView):
         else:
             for i in range(0, known_words_number_per_language * 2):
                 known_word_id_list.append(randint(1, 9134))
-                known_words_list.append(Words.objects.filter(id=pol_word_id_list[i])[0].word)
+                known_words_list.append(Words.objects.filter(id=known_word_id_list[i])[0].word)
 
         # from all words
         for i in range(0, words_per_language):
