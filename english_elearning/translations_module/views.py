@@ -154,7 +154,7 @@ class MixedQuiz(DetailView):
         original_words_id = []
         words_number = 14
         good_answers = 0
-        for i in range(1, words_number):
+        for i in range(1, words_number+1):
             current_word = request.POST.get('word{0}'.format(i), "").lower()
             user_words.append(current_word)
 
@@ -229,6 +229,190 @@ class MixedQuiz(DetailView):
         result = "%.2f" % (float(good_answers) / original_words_id.__len__() * 100)
         quiz_result = Quiz(id_user=current_user_id, result=result,
                            quiz_type_id=1)
+        quiz_result.save()
+
+        id_quiz = Quiz.objects.latest('id').id
+        for id in original_words_id:
+            quiz_words = QuizWords(id_quiz=id_quiz, id_word=id)
+            quiz_words.save()
+        context = {'result': result}
+        return render(request, 'results.html', context=context)
+
+
+class PolQuiz(DetailView):
+    def get(self, request, *args, **kwargs):
+        word_number = 10
+        pol_word_id_list = []
+        pol_words_list = []
+        # from all words
+        for i in range(0, word_number):
+            pol_word_id_list.append(randint(1, 4567))
+            pol_words_list.append(Words.objects.filter(id=pol_word_id_list[i])[0].word)
+
+        context = {'pol_word_id_list': pol_word_id_list, 'pol_words_list': pol_words_list}
+
+        return render(request, 'pol_quiz.html', context=context)
+
+    def post(self, request):
+
+        current_user_id = request.user.id
+        user_words = []
+        original_words = []
+        original_words_id = []
+        words_number = 10
+        good_answers = 0
+        for i in range(1, words_number+1):
+            current_word = request.POST.get('word{0}'.format(i), "").lower()
+            user_words.append(current_word)
+
+            current_original_word = request.POST.get('original_word{0}'.format(i), "").lower()
+            original_words.append(current_original_word)
+
+            current_original_word_id = request.POST.get('original_word_id{0}'.format(i), "")
+            original_words_id.append(current_original_word_id)
+
+            original_word = list(Words.objects.filter(id=current_original_word_id))
+            word = list(Words.objects.filter(word=current_word))
+            original_word_language = original_word[0].language
+
+            if word:
+
+                word_language = word[0].language
+                if word_language == "polish":
+                    query_set = list(Translations.objects.filter(id_polish=word[0].id))
+                    translated_id = [word.id_eng for word in query_set]
+                else:
+                    query_set = list(Translations.objects.filter(id_eng=word[0].id))
+                    translated_id = [word.id_polish for word in query_set]
+
+                if translated_id[0] == int(original_words_id[i - 1]):
+                    # dodaje punkty do slowa bo odpowiedzial poprawnie
+                    # patrzymy czy istnieje
+                    try:
+                        answer = UserProgress.objects.get(id_user=current_user_id,
+                                                          id_word=int(original_words_id[i - 1]))
+                        answer.pol_points += 10
+                        answer.status = "passed"
+                        answer.save()
+                    except UserProgress.DoesNotExist:
+                        # tworzymy nowy wpis
+                        answer = UserProgress(id_user=current_user_id, id_word=int(original_words_id[i - 1]),
+                                              status="passed", pol_points=10, eng_points=0)
+                        answer.save()
+                    good_answers += 1
+
+            else:
+                # slowa nie ma w slowniku wiec niepoprawna odpowiedz
+                # patrzymy czy istnieje juz wpis
+                try:
+                    bad_answer = UserProgress.objects.get(id_user=current_user_id,
+                                                          id_word=int(original_words_id[i - 1]))
+                    bad_answer.pol_points -= 10
+                    bad_answer.status = "failed"
+                    bad_answer.save()
+                except UserProgress.DoesNotExist:
+                    # tworzymy nowy wpis
+
+                    bad_answer = UserProgress(id_user=current_user_id, id_word=int(original_words_id[i - 1]),
+                                              status="failed", pol_points=-10, eng_points=0)
+                    bad_answer.save()
+
+        result = "%.2f" % (float(good_answers) / original_words_id.__len__() * 100)
+        quiz_result = Quiz(id_user=current_user_id, result=result,
+                           quiz_type_id=2)
+        quiz_result.save()
+
+        id_quiz = Quiz.objects.latest('id').id
+        for id in original_words_id:
+            quiz_words = QuizWords(id_quiz=id_quiz, id_word=id)
+            quiz_words.save()
+        context = {'result': result}
+        return render(request, 'results.html', context=context)
+
+
+class EngQuiz(DetailView):
+    def get(self, request, *args, **kwargs):
+        word_number = 10
+        eng_word_id_list = []
+        eng_words_list = []
+        # from all words
+        for i in range(0, word_number):
+            eng_word_id_list.append(randint(4568, 9134))
+            eng_words_list.append(Words.objects.filter(id=eng_word_id_list[i])[0].word)
+
+        context = {'eng_word_id_list': eng_word_id_list, 'eng_words_list': eng_words_list}
+
+        return render(request, 'eng_quiz.html', context=context)
+
+    def post(self, request):
+
+        current_user_id = request.user.id
+        user_words = []
+        original_words = []
+        original_words_id = []
+        words_number = 10
+        good_answers = 0
+        for i in range(1, words_number+1):
+            current_word = request.POST.get('word{0}'.format(i), "").lower()
+            user_words.append(current_word)
+
+            current_original_word = request.POST.get('original_word{0}'.format(i), "").lower()
+            original_words.append(current_original_word)
+
+            current_original_word_id = request.POST.get('original_word_id{0}'.format(i), "")
+            original_words_id.append(current_original_word_id)
+
+            original_word = list(Words.objects.filter(id=current_original_word_id))
+            word = list(Words.objects.filter(word=current_word))
+            original_word_language = original_word[0].language
+
+            if word:
+
+                word_language = word[0].language
+                if word_language == "polish":
+                    query_set = list(Translations.objects.filter(id_polish=word[0].id))
+                    translated_id = [word.id_eng for word in query_set]
+                else:
+                    query_set = list(Translations.objects.filter(id_eng=word[0].id))
+                    translated_id = [word.id_polish for word in query_set]
+
+                if translated_id[0] == int(original_words_id[i - 1]):
+                    # dodaje punkty do slowa bo odpowiedzial poprawnie
+                    # patrzymy czy istnieje
+                    try:
+                        answer = UserProgress.objects.get(id_user=current_user_id,
+                                                          id_word=int(original_words_id[i - 1]))
+                        answer.eng_points += 10
+                        answer.status = "passed"
+                        answer.save()
+                    except UserProgress.DoesNotExist:
+                        # tworzymy nowy wpis
+
+                        answer = UserProgress(id_user=current_user_id, id_word=int(original_words_id[i - 1]),
+                                              status="passed", pol_points=0, eng_points=10)
+                        answer.save()
+                    good_answers += 1
+
+            else:
+                # slowa nie ma w slowniku wiec niepoprawna odpowiedz
+                # patrzymy czy istnieje juz wpis
+                try:
+                    bad_answer = UserProgress.objects.get(id_user=current_user_id,
+                                                          id_word=int(original_words_id[i - 1]))
+
+                    bad_answer.eng_points -= 10
+                    bad_answer.status = "failed"
+                    bad_answer.save()
+                except UserProgress.DoesNotExist:
+                    # tworzymy nowy wpis
+
+                    bad_answer = UserProgress(id_user=current_user_id, id_word=int(original_words_id[i - 1]),
+                                              status="failed", pol_points=0, eng_points=-10)
+                    bad_answer.save()
+
+        result = "%.2f" % (float(good_answers) / original_words_id.__len__() * 100)
+        quiz_result = Quiz(id_user=current_user_id, result=result,
+                           quiz_type_id=3)
         quiz_result.save()
 
         id_quiz = Quiz.objects.latest('id').id
