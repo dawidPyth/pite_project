@@ -160,3 +160,37 @@ class Words(models.Model):
     class Meta:
         managed = False
         db_table = 'words'
+
+
+class UserProgress(models.Model):
+    id = models.IntegerField(unique=True, primary_key=True)
+    id_user = models.IntegerField()
+    id_word = models.IntegerField()
+    status = models.TextField()
+    pol_points = models.IntegerField()
+    eng_points = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'user_progress'
+
+
+class Quiz(models.Model):
+    id = models.IntegerField(unique=True, primary_key=True)
+    id_user = models.IntegerField()
+    result = models.TextField()
+    quiz_type_id = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'quiz'
+
+
+class QuizWords(models.Model):
+    id = models.IntegerField(unique=True, primary_key=True)
+    id_quiz = models.IntegerField()
+    id_word = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'quiz_words'

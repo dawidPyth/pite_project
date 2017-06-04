@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/pol_quiz/" method="post">
+    {% csrf_token %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Words</th>
+        <th>Translations</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for word in pol_words_list %}
+    <tr>
+        <td><p>{{ word }}</p></td>
+        <td><input type="hidden" name="original_word{{ forloop.counter }}" value="{{ word }}" /> </td>
+        <td><input id="polquiz" type="text" name="word{{ forloop.counter }}"> </td>
+    </tr>
+    {% endfor %}
+    {% for word_id in pol_word_id_list %}
+
+        <input type="hidden" name="original_word_id{{ forloop.counter }}" value="{{ word_id }}" />
+
+    {% endfor %}
+
+    <tr>
+        <td> </td>
+        <td><input type="submit" value="Submit"> </tr>  </td>
+    </tbody>
+</table>
+</form>
+
+{% endblock %}
