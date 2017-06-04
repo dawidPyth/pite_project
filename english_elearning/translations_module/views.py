@@ -19,9 +19,9 @@ class DictionaryView(DetailView):
         word_to_translate = request.POST.get('word', "").lower()
         translated_words = []
         word = list(Words.objects.filter(word=word_to_translate))
-
         if word:
-            if word[0].language == "polish":
+            language = word[0].language
+            if language == "polish":
                 query_set = list(Translations.objects.filter(id_polish=word[0].id))
                 ids = [word.id_eng for word in query_set]
             else:
@@ -30,12 +30,12 @@ class DictionaryView(DetailView):
 
             results = list(Words.objects.filter(id__in=ids))
             translated_words = [translation.word for translation in results]
-
+            context = {'translated_words': translated_words, 'word_to_translate': word_to_translate , 'language': language}
+            return render(request, 'dictionary.html', context)
         else:
             translated_words.append("Word unknown!")
-
-        context = {'translated_words': translated_words}
-        return render(request, 'dictionary.html', context)
+            context = {'translated_words': translated_words, 'word_to_translate': word_to_translate , 'language': 'none'}
+            return render(request, 'dictionary.html', context)
 
 
 class ProfileView(DetailView):
